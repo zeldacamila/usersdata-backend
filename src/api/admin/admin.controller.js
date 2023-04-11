@@ -5,6 +5,10 @@ const jwt = require('jsonwebtoken')
 const signup = async (req, res) => {
   try {
     const { email, password } = req.body
+    const adminExistente = await Admin.findOne({ email })
+    if (adminExistente) {
+      return res.status(400).json({ mensaje: 'El correo electrónico ya está registrado' })
+    }
     const passwordHash = await bcrypt.hash(password, 10)
     const admin = await Admin.create({ email, password: passwordHash })
     const token = jwt.sign(
