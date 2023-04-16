@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
 function connect () {
+
   const mongodbUri = process.env.MONGODB_URI
 
   mongoose.connect(mongodbUri)
@@ -14,6 +15,7 @@ function connect () {
   })
 
   return mongoose.connection
+  
 }
 
 module.exports = { connect }

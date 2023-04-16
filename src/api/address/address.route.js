@@ -1,9 +1,9 @@
 const express = require('express')
-const { create, listMarkers } = require('./address.controller')
+const { createMarker, listMarkers } = require('./address.controller')
 
 const router = express.Router()
 
-router.post('/markers', create)
+router.post('/markers', createMarker)
 router.get('/markers', listMarkers)
 
 module.exports = router
